@@ -1,21 +1,217 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://yxmg.github.io</id>
-    <title>夜雪暮歌&apos;s Blog</title>
-    <updated>2021-04-14T12:16:56.067Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://yxmg.github.io"/>
-    <link rel="self" href="https://yxmg.github.io/atom.xml"/>
-    <logo>https://yxmg.github.io/images/avatar.png</logo>
-    <icon>https://yxmg.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, 夜雪暮歌&apos;s Blog</rights>
-    <entry>
-        <title type="html"><![CDATA[🐢11s到⚡1s，性能优化之首屏加载🚀]]></title>
-        <id>https://yxmg.github.io/post/Jn7qjrJfx/</id>
-        <link href="https://yxmg.github.io/post/Jn7qjrJfx/">
-        </link>
-        <updated>2021-04-14T12:16:17.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>🐢11s到⚡1s，性能优化之首屏加载🚀 | 夜雪暮歌&#39;s Blog</title>
+
+<link rel="shortcut icon" href="https://yxmg.github.io/favicon.ico?v=1618402610081">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://yxmg.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<style>
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <style>
+    /* 导航栏样式 */
+    .navbar {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .navbar-brand:hover,
+    .navbar-brand:focus {
+        text-decoration: none;
+    }
+
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    .navbar-collapse {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .navbar-toggler:hover,
+    .navbar-toggler:focus {
+        text-decoration: none;
+    }
+
+    @media (min-width: 992px) {
+        .navbar-expand-lg {
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+
+        .navbar-expand-lg .navbar-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+
+        .navbar-expand-lg .navbar-collapse {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        }
+
+        .navbar-expand-lg .navbar-toggler {
+            display: none;
+        }
+    }
+
+    @media (max-width: 991px) {
+        #navbarSupportedContent {
+            display: none;
+        }
+    }
+</style>
+<nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            夜雪暮歌&#39;s Blog
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于我
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1618402610081"
+                action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = function () {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    🐢11s到⚡1s，性能优化之首屏加载🚀
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-04-14 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
 <p>全文共6511字/词，阅读大概需要13分钟，太长不看党请直接移步👉「开始优化」部分直接查看优化手段</p>
 </blockquote>
 <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/04/12/OrbNxFYdtMczQRB.png" alt="" loading="lazy"></figure>
@@ -701,140 +897,109 @@ chainWebpack: (config) =&gt; {
 <li><a href="https://juejin.cn/post/6844903789388890119#heading-2">我是如何让公司后台管理系统焕然一新的(上)-性能优化</a></li>
 <li>...</li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[[Vue] slot详解，slot、slot-scope和v-slot]]></title>
-        <id>https://yxmg.github.io/post/vue-slot/</id>
-        <link href="https://yxmg.github.io/post/vue-slot/">
-        </link>
-        <updated>2021-04-14T12:12:13.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="slot是什么">slot是什么</h2>
-<p>slot，也称<strong>插槽</strong>，可以类比为插卡式的FC游戏机，游戏机（子组件）暴露卡槽（插槽）让用户插入不同的游戏磁条（自定义内容），游戏机会读取并加载磁条里的游戏。<br>
-Vue的slot，是<strong>组件的一块HTML模版</strong>，这块模版<strong>由使用组件者即父组件提供</strong>。可以说是子组件暴露的一个让父组件传入自定义内容的接口。<br>
-<img src="https://user-gold-cdn.xitu.io/2019/4/12/16a122cf219755de?w=750&amp;h=534&amp;f=png&amp;s=102561" alt="FC-slot" loading="lazy"></p>
-<h2 id="slot的作用">slot的作用</h2>
-<p>让用户可以拓展组件，去更好地复用组件和对其做定制化处理。<br>
-举一些例子，比如布局组件、表格列、下拉选项</p>
-<h2 id="slot怎么用">slot怎么用</h2>
-<p>slot的用法可以分为三类，分别是<strong>默认插槽、具名插槽和作用域插槽</strong><br>
-<strong>子组件中：</strong></p>
-<ul>
-<li>插槽用<code>&lt;slot&gt;</code>标签来确定渲染的位置，里面放如果父组件没传内容时的后备内容</li>
-<li><strong>具名插槽</strong>用<code>name</code>属性来表示插槽的名字，不传为默认插槽</li>
-<li><strong>作用域插槽</strong>在作用域上绑定属性来将子组件的信息传给父组件使用，这些属性会被挂在父组件slot-scope接受的对象上。</li>
-</ul>
-<pre><code class="language-html">// Child.vue
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;main&gt;
-    &lt;!-- 默认插槽 --&gt;
-        &lt;slot&gt;
-          &lt;!-- slot内为后备内容 --&gt;
-          &lt;h3&gt;没传内容&lt;/h3&gt;
-        &lt;/slot&gt;
-    &lt;/main&gt;
 
-    &lt;!-- 具名插槽 --&gt;
-    &lt;header&gt;
-        &lt;slot name=&quot;header&quot;&gt;
-          &lt;h3&gt;没传header插槽&lt;/h3&gt;
-        &lt;/slot&gt;
-    &lt;/header&gt;
+                </div>
+            </article>
+        </div>
 
-    &lt;!-- 作用域插槽 --&gt;
-    &lt;footer&gt;
-        &lt;slot name=&quot;footer&quot; testProps=&quot;子组件的值&quot;&gt;
-          &lt;h3&gt;没传footer插槽&lt;/h3&gt;
-        &lt;/slot&gt;
-    &lt;footer&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://yxmg.github.io/post/vue-slot/" class="post-title gt-a-link">
+                    [Vue] slot详解，slot、slot-scope和v-slot
+                </a>
+            </div>
+        
 
-&lt;style scoped&gt;
-div{
- border: 1px solid #000;  
-}
-&lt;/style&gt;
-</code></pre>
-<p><strong>父组件中在使用时：</strong></p>
-<ul>
-<li><strong>默认插槽</strong>的话直接在子组件的标签内写入内容即可</li>
-<li><strong>具名插槽</strong>是在默认插槽的基础上加上<code>slot</code>属性，值为子组件插槽<code>name</code>属性值</li>
-<li><strong>作用域插槽</strong>则是通过<code>slot-scope</code>获取子组件的信息，在内容中使用。这里可以用解构语法去直接获取想要的属性</li>
-</ul>
-<pre><code class="language-javascript">// Parent.vue
-&lt;child&gt;
-  &lt;!-- 默认插槽 --&gt;
-  &lt;div&gt;默认插槽&lt;/div&gt;  
-  &lt;!-- 具名插槽 --&gt;
-  &lt;div slot=&quot;header&quot;&gt;具名插槽header&lt;/div&gt;
-  &lt;!-- 作用域插槽 --&gt;
-  &lt;div slot=&quot;footer&quot; slot-scope=&quot;slotProps&quot;&gt;
-    {{slotProps.testProps}}
-  &lt;/div&gt;
-&lt;/child&gt;
-</code></pre>
-<p><strong>渲染结果为</strong><br>
-<img src="https://user-gold-cdn.xitu.io/2019/4/12/16a123489dbab815?w=797&amp;h=195&amp;f=png&amp;s=8021" alt="slot-demo" loading="lazy"></p>
-<h2 id="v-slot">v-slot</h2>
-<blockquote>
-<p>在vue2.6中，上述的API被软废弃（3.0正式废弃），取而代之的是内置指令v-slot，可以缩写为【#】</p>
-</blockquote>
-<p><strong>子组件用法保持不变</strong>，父组件中</p>
-<ul>
-<li><code>slot</code>属性弃用，具名插槽通过指令参数<code>v-slot:插槽名</code> 的形式传入，可以简化为 <code>#插槽名</code>。</li>
-<li><code>slot-scope</code>属性弃用，作用域插槽通过<code>v-slot:xxx=&quot;slotProps&quot;</code>的slotProps来获取子组件传出的属性</li>
-<li><code>v-slot</code>属性只能在<code>&lt;template&gt;</code>上使用，但在【<strong>只有默认插槽时</strong>】可以在组件标签上使用</li>
-</ul>
-<pre><code class="language-html">//Parent
-&lt;template&gt;
-  &lt;child&gt;
-   &lt;!--默认插槽--&gt;
-   &lt;template v-slot&gt;
-     &lt;div&gt;默认插槽&lt;/div&gt;
-   &lt;/template&gt;
-   &lt;!--具名插槽--&gt;
-   &lt;template #header&gt;
-     &lt;div&gt;具名插槽&lt;/div&gt;
-   &lt;/template&gt;
-   &lt;!--作用域插槽--&gt;
-   &lt;template #footer=&quot;slotProps&quot;&gt;
-     &lt;div&gt;
-      {{slotProps.testProps}}
-     &lt;/div&gt;
-   &lt;/template&gt;
-  &lt;child&gt;
-&lt;/template&gt;
-</code></pre>
-<h3 id="拓展用法">拓展用法：</h3>
-<ol>
-<li>同样可以通过解构获取<code>v-slot={user}</code>,<br>
-还可以重命名<code>v-slot=&quot;{user: newName}&quot;</code>和定义默认值<code>v-slot=&quot;{user = '默认值'}&quot;</code></li>
-<li>插槽名可以是动态变化的 <code>v-slot:[slotName]</code></li>
-</ol>
-<h3 id="注意">注意：</h3>
-<ol>
-<li>默认插槽名为<code>default</code>，可以省略default直接写<code>v-slot</code>，<br>
-缩写为#时不能不写参数，写成<code>#default</code>（这点所有指令都一样，v-bind、v-on）</li>
-<li>多个插槽混用时，v-slot不能省略default</li>
-</ol>
-<h2 id="作用域插槽的原理">作用域插槽的原理</h2>
-<p>slot本质上是返回VNode的函数，一般情况下，Vue中的组件要渲染到页面上需要经过<br>
-<code>template &gt;&gt; render function &gt;&gt; VNode &gt;&gt; DOM</code> 过程。 组件挂载的本质就是执行渲染函数得到VNode，至于data/props/computed这些属性都是给VNode提供数据来源。</p>
-<p>在2.5之前，如果是普通插槽就<strong>直接是VNode</strong>的形式了，而如果是作用域插槽，由于子组件需要在父组件访问子组件的数据，所以父组件下是一个<strong>未执行的函数</strong><br>
-<code>(slotScope) =&gt; return h('div', slotScope.msg)</code><br>
-，接受子组件的slotProps参数，在子组件渲染实例时会调用该函数传入数据。</p>
-<p>在2.6之后，两者合并，普通插槽也变成一个函数，只是不接受参数了。</p>
-<h2 id="大纲速记">大纲速记：</h2>
-<figure data-type="image" tabindex="1"><img src="https://user-gold-cdn.xitu.io/2019/4/13/16a1253a89d07261?w=1797&amp;h=838&amp;f=png&amp;s=153239" alt="outline" loading="lazy"></figure>
-<blockquote>
-<p>仅作学习记录。如有错漏之处，敬请指正</p>
-</blockquote>
-<h2 id="参考">参考</h2>
-<p><a href="https://cn.vuejs.org/v2/guide/components-slots.html">vue文档-插槽</a><br>
-<a href="https://www.zhihu.com/question/37548226/answer/609289491">如何理解Vue.js的组件中的slot？</a><br>
-<a href="https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md">v-slot由来 - RFC</a></p>
-]]></content>
-    </entry>
-</feed>
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+    // md5.min.js
+    !function(n){
+        "use strict";
+        function d(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}
+        function f(n,t,r,e,o,u){return d((c=d(d(t,n),d(e,u)))<<(f=o)|c>>>32-f,r);var c,f}
+        function l(n,t,r,e,o,u,c){return f(t&r|~t&e,n,t,o,u,c)}
+        function v(n,t,r,e,o,u,c){return f(t&e|r&~e,n,t,o,u,c)}
+        function g(n,t,r,e,o,u,c){return f(t^r^e,n,t,o,u,c)}
+        function m(n,t,r,e,o,u,c){return f(r^(t|~e),n,t,o,u,c)}
+        function i(n,t){var r,e,o,u,c;n[t>>5]|=128<<t%32,n[14+(t+64>>>9<<4)]=t;var f=1732584193,i=-271733879,a=-1732584194,h=271733878;for(r=0;r<n.length;r+=16)f=l(e=f,o=i,u=a,c=h,n[r],7,-680876936),h=l(h,f,i,a,n[r+1],12,-389564586),a=l(a,h,f,i,n[r+2],17,606105819),i=l(i,a,h,f,n[r+3],22,-1044525330),f=l(f,i,a,h,n[r+4],7,-176418897),h=l(h,f,i,a,n[r+5],12,1200080426),a=l(a,h,f,i,n[r+6],17,-1473231341),i=l(i,a,h,f,n[r+7],22,-45705983),f=l(f,i,a,h,n[r+8],7,1770035416),h=l(h,f,i,a,n[r+9],12,-1958414417),a=l(a,h,f,i,n[r+10],17,-42063),i=l(i,a,h,f,n[r+11],22,-1990404162),f=l(f,i,a,h,n[r+12],7,1804603682),h=l(h,f,i,a,n[r+13],12,-40341101),a=l(a,h,f,i,n[r+14],17,-1502002290),f=v(f,i=l(i,a,h,f,n[r+15],22,1236535329),a,h,n[r+1],5,-165796510),h=v(h,f,i,a,n[r+6],9,-1069501632),a=v(a,h,f,i,n[r+11],14,643717713),i=v(i,a,h,f,n[r],20,-373897302),f=v(f,i,a,h,n[r+5],5,-701558691),h=v(h,f,i,a,n[r+10],9,38016083),a=v(a,h,f,i,n[r+15],14,-660478335),i=v(i,a,h,f,n[r+4],20,-405537848),f=v(f,i,a,h,n[r+9],5,568446438),h=v(h,f,i,a,n[r+14],9,-1019803690),a=v(a,h,f,i,n[r+3],14,-187363961),i=v(i,a,h,f,n[r+8],20,1163531501),f=v(f,i,a,h,n[r+13],5,-1444681467),h=v(h,f,i,a,n[r+2],9,-51403784),a=v(a,h,f,i,n[r+7],14,1735328473),f=g(f,i=v(i,a,h,f,n[r+12],20,-1926607734),a,h,n[r+5],4,-378558),h=g(h,f,i,a,n[r+8],11,-2022574463),a=g(a,h,f,i,n[r+11],16,1839030562),i=g(i,a,h,f,n[r+14],23,-35309556),f=g(f,i,a,h,n[r+1],4,-1530992060),h=g(h,f,i,a,n[r+4],11,1272893353),a=g(a,h,f,i,n[r+7],16,-155497632),i=g(i,a,h,f,n[r+10],23,-1094730640),f=g(f,i,a,h,n[r+13],4,681279174),h=g(h,f,i,a,n[r],11,-358537222),a=g(a,h,f,i,n[r+3],16,-722521979),i=g(i,a,h,f,n[r+6],23,76029189),f=g(f,i,a,h,n[r+9],4,-640364487),h=g(h,f,i,a,n[r+12],11,-421815835),a=g(a,h,f,i,n[r+15],16,530742520),f=m(f,i=g(i,a,h,f,n[r+2],23,-995338651),a,h,n[r],6,-198630844),h=m(h,f,i,a,n[r+7],10,1126891415),a=m(a,h,f,i,n[r+14],15,-1416354905),i=m(i,a,h,f,n[r+5],21,-57434055),f=m(f,i,a,h,n[r+12],6,1700485571),h=m(h,f,i,a,n[r+3],10,-1894986606),a=m(a,h,f,i,n[r+10],15,-1051523),i=m(i,a,h,f,n[r+1],21,-2054922799),f=m(f,i,a,h,n[r+8],6,1873313359),h=m(h,f,i,a,n[r+15],10,-30611744),a=m(a,h,f,i,n[r+6],15,-1560198380),i=m(i,a,h,f,n[r+13],21,1309151649),f=m(f,i,a,h,n[r+4],6,-145523070),h=m(h,f,i,a,n[r+11],10,-1120210379),a=m(a,h,f,i,n[r+2],15,718787259),i=m(i,a,h,f,n[r+9],21,-343485551),f=d(f,e),i=d(i,o),a=d(a,u),h=d(h,c);return[f,i,a,h]}
+        function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}
+        function h(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}
+        function e(n){var t,r,e="0123456789abcdef",o="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),o+=e.charAt(t>>>4&15)+e.charAt(15&t);return o}
+        function r(n){return unescape(encodeURIComponent(n))}
+        function o(n){return a(i(h(t=r(n)),8*t.length));var t}
+        function u(n,t){return function(n,t){var r,e,o=h(n),u=[],c=[];for(u[15]=c[15]=void 0,16<o.length&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(h(t)),512+8*t.length),a(i(c.concat(e),640))}(r(n),r(t))}
+        function t(n,t,r){return t?r?u(t,n):e(u(t,n)):r?o(n):e(o(n))}
+        "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
+    }(this);
+</script>
+
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '2207b11ffee3914db9b6',
+    clientSecret: '60fbb8ac43ee538c34e0ebf68a314fef7321788e',
+    repo: 'blog-gitalk',
+    owner: 'yxmg',
+    admin: ['yxmg'],
+    id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false       // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"></div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/yxmg" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://yxmg.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,10 +1,10 @@
-<html lang="zh">
+<html>
 <head>
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>关于 - 夜雪暮歌&#39;s Blog</title>
+<title>[Vue] slot详解，slot、slot-scope和v-slot | 夜雪暮歌&#39;s Blog</title>
 
 <link rel="shortcut icon" href="https://yxmg.github.io/favicon.ico?v=1618402610081">
 
@@ -33,7 +33,7 @@
 <!--<script src="media/scripts/index.js"></script>-->
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
@@ -199,14 +199,153 @@
     }
 </script>
     <div class="post-container">
-        <div class="post-detail">
+        <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
-                <div class="post-content">
+                <h2 class="post-title">
+                    [Vue] slot详解，slot、slot-scope和v-slot
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-04-14 ·
+                    </time>
                     
+                </div>
+                <div class="post-content">
+                    <h2 id="slot是什么">slot是什么</h2>
+<p>slot，也称<strong>插槽</strong>，可以类比为插卡式的FC游戏机，游戏机（子组件）暴露卡槽（插槽）让用户插入不同的游戏磁条（自定义内容），游戏机会读取并加载磁条里的游戏。<br>
+Vue的slot，是<strong>组件的一块HTML模版</strong>，这块模版<strong>由使用组件者即父组件提供</strong>。可以说是子组件暴露的一个让父组件传入自定义内容的接口。<br>
+<img src="https://user-gold-cdn.xitu.io/2019/4/12/16a122cf219755de?w=750&amp;h=534&amp;f=png&amp;s=102561" alt="FC-slot" loading="lazy"></p>
+<h2 id="slot的作用">slot的作用</h2>
+<p>让用户可以拓展组件，去更好地复用组件和对其做定制化处理。<br>
+举一些例子，比如布局组件、表格列、下拉选项</p>
+<h2 id="slot怎么用">slot怎么用</h2>
+<p>slot的用法可以分为三类，分别是<strong>默认插槽、具名插槽和作用域插槽</strong><br>
+<strong>子组件中：</strong></p>
+<ul>
+<li>插槽用<code>&lt;slot&gt;</code>标签来确定渲染的位置，里面放如果父组件没传内容时的后备内容</li>
+<li><strong>具名插槽</strong>用<code>name</code>属性来表示插槽的名字，不传为默认插槽</li>
+<li><strong>作用域插槽</strong>在作用域上绑定属性来将子组件的信息传给父组件使用，这些属性会被挂在父组件slot-scope接受的对象上。</li>
+</ul>
+<pre><code class="language-html">// Child.vue
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;main&gt;
+    &lt;!-- 默认插槽 --&gt;
+        &lt;slot&gt;
+          &lt;!-- slot内为后备内容 --&gt;
+          &lt;h3&gt;没传内容&lt;/h3&gt;
+        &lt;/slot&gt;
+    &lt;/main&gt;
+
+    &lt;!-- 具名插槽 --&gt;
+    &lt;header&gt;
+        &lt;slot name=&quot;header&quot;&gt;
+          &lt;h3&gt;没传header插槽&lt;/h3&gt;
+        &lt;/slot&gt;
+    &lt;/header&gt;
+
+    &lt;!-- 作用域插槽 --&gt;
+    &lt;footer&gt;
+        &lt;slot name=&quot;footer&quot; testProps=&quot;子组件的值&quot;&gt;
+          &lt;h3&gt;没传footer插槽&lt;/h3&gt;
+        &lt;/slot&gt;
+    &lt;footer&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+div{
+ border: 1px solid #000;  
+}
+&lt;/style&gt;
+</code></pre>
+<p><strong>父组件中在使用时：</strong></p>
+<ul>
+<li><strong>默认插槽</strong>的话直接在子组件的标签内写入内容即可</li>
+<li><strong>具名插槽</strong>是在默认插槽的基础上加上<code>slot</code>属性，值为子组件插槽<code>name</code>属性值</li>
+<li><strong>作用域插槽</strong>则是通过<code>slot-scope</code>获取子组件的信息，在内容中使用。这里可以用解构语法去直接获取想要的属性</li>
+</ul>
+<pre><code class="language-javascript">// Parent.vue
+&lt;child&gt;
+  &lt;!-- 默认插槽 --&gt;
+  &lt;div&gt;默认插槽&lt;/div&gt;  
+  &lt;!-- 具名插槽 --&gt;
+  &lt;div slot=&quot;header&quot;&gt;具名插槽header&lt;/div&gt;
+  &lt;!-- 作用域插槽 --&gt;
+  &lt;div slot=&quot;footer&quot; slot-scope=&quot;slotProps&quot;&gt;
+    {{slotProps.testProps}}
+  &lt;/div&gt;
+&lt;/child&gt;
+</code></pre>
+<p><strong>渲染结果为</strong><br>
+<img src="https://user-gold-cdn.xitu.io/2019/4/12/16a123489dbab815?w=797&amp;h=195&amp;f=png&amp;s=8021" alt="slot-demo" loading="lazy"></p>
+<h2 id="v-slot">v-slot</h2>
+<blockquote>
+<p>在vue2.6中，上述的API被软废弃（3.0正式废弃），取而代之的是内置指令v-slot，可以缩写为【#】</p>
+</blockquote>
+<p><strong>子组件用法保持不变</strong>，父组件中</p>
+<ul>
+<li><code>slot</code>属性弃用，具名插槽通过指令参数<code>v-slot:插槽名</code> 的形式传入，可以简化为 <code>#插槽名</code>。</li>
+<li><code>slot-scope</code>属性弃用，作用域插槽通过<code>v-slot:xxx=&quot;slotProps&quot;</code>的slotProps来获取子组件传出的属性</li>
+<li><code>v-slot</code>属性只能在<code>&lt;template&gt;</code>上使用，但在【<strong>只有默认插槽时</strong>】可以在组件标签上使用</li>
+</ul>
+<pre><code class="language-html">//Parent
+&lt;template&gt;
+  &lt;child&gt;
+   &lt;!--默认插槽--&gt;
+   &lt;template v-slot&gt;
+     &lt;div&gt;默认插槽&lt;/div&gt;
+   &lt;/template&gt;
+   &lt;!--具名插槽--&gt;
+   &lt;template #header&gt;
+     &lt;div&gt;具名插槽&lt;/div&gt;
+   &lt;/template&gt;
+   &lt;!--作用域插槽--&gt;
+   &lt;template #footer=&quot;slotProps&quot;&gt;
+     &lt;div&gt;
+      {{slotProps.testProps}}
+     &lt;/div&gt;
+   &lt;/template&gt;
+  &lt;child&gt;
+&lt;/template&gt;
+</code></pre>
+<h3 id="拓展用法">拓展用法：</h3>
+<ol>
+<li>同样可以通过解构获取<code>v-slot={user}</code>,<br>
+还可以重命名<code>v-slot=&quot;{user: newName}&quot;</code>和定义默认值<code>v-slot=&quot;{user = '默认值'}&quot;</code></li>
+<li>插槽名可以是动态变化的 <code>v-slot:[slotName]</code></li>
+</ol>
+<h3 id="注意">注意：</h3>
+<ol>
+<li>默认插槽名为<code>default</code>，可以省略default直接写<code>v-slot</code>，<br>
+缩写为#时不能不写参数，写成<code>#default</code>（这点所有指令都一样，v-bind、v-on）</li>
+<li>多个插槽混用时，v-slot不能省略default</li>
+</ol>
+<h2 id="作用域插槽的原理">作用域插槽的原理</h2>
+<p>slot本质上是返回VNode的函数，一般情况下，Vue中的组件要渲染到页面上需要经过<br>
+<code>template &gt;&gt; render function &gt;&gt; VNode &gt;&gt; DOM</code> 过程。 组件挂载的本质就是执行渲染函数得到VNode，至于data/props/computed这些属性都是给VNode提供数据来源。</p>
+<p>在2.5之前，如果是普通插槽就<strong>直接是VNode</strong>的形式了，而如果是作用域插槽，由于子组件需要在父组件访问子组件的数据，所以父组件下是一个<strong>未执行的函数</strong><br>
+<code>(slotScope) =&gt; return h('div', slotScope.msg)</code><br>
+，接受子组件的slotProps参数，在子组件渲染实例时会调用该函数传入数据。</p>
+<p>在2.6之后，两者合并，普通插槽也变成一个函数，只是不接受参数了。</p>
+<h2 id="大纲速记">大纲速记：</h2>
+<figure data-type="image" tabindex="1"><img src="https://user-gold-cdn.xitu.io/2019/4/13/16a1253a89d07261?w=1797&amp;h=838&amp;f=png&amp;s=153239" alt="outline" loading="lazy"></figure>
+<blockquote>
+<p>仅作学习记录。如有错漏之处，敬请指正</p>
+</blockquote>
+<h2 id="参考">参考</h2>
+<p><a href="https://cn.vuejs.org/v2/guide/components-slots.html">vue文档-插槽</a><br>
+<a href="https://www.zhihu.com/question/37548226/answer/609289491">如何理解Vue.js的组件中的slot？</a><br>
+<a href="https://github.com/vuejs/rfcs/blob/master/active-rfcs/0001-new-slot-syntax.md">v-slot由来 - RFC</a></p>
+
                 </div>
             </article>
         </div>
-        <br>
+
+        
+
+        
+
         
             
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
@@ -253,11 +392,11 @@
 </script>
 
             
+
             
         
 
         
-
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first"></div>
